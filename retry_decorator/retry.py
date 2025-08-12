@@ -32,7 +32,7 @@ def retry(
 
     def decorator(func: Callable):
         if asyncio.iscoroutinefunction(func):
-            # Async version
+            """ Async version """
     @functools.wraps(func)
     async def async_wrapper(*args,**kwargs):
         _delay = delay
