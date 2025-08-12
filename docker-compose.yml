@@ -1,0 +1,47 @@
+version: '3.9'
+services:
+  python_app:
+    build: .
+    container_name: python_advanced_ingestion
+    volumes:
+      - ./app:/app/app
+    depends_on:
+      - db
+      - redis
+    environment:
+      # Postgres connection
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=ingestiondb
+      - DB_USER=ingestionuser
+      - DB_PASSWORD=secret
+      # Redis connection
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    command: python app/main.py --mode sync
+
+  db:
+    image: postgres:15-alpine
+    container_name: postgres_ingestion
+    restart: always
+    environment:
+      POSTGRES_USER: ingestionuser
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: ingestiondb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_ingestion
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
