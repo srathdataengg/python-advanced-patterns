@@ -1,0 +1,11 @@
+2025-08-13 15:33:35,728 - Python advance project - WARNING - This is a warning
+2025-08-13 15:33:35,729 - Python advance project - WARNING - Attempt 1 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x100c6da10>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x100c6da10>?
+2025-08-13 15:33:37,736 - Python advance project - WARNING - Attempt 2 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x100c6da10>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x100c6da10>?
+2025-08-13 15:33:39,743 - Python advance project - WARNING - Attempt 3 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x100c6da10>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x100c6da10>?
+2025-08-13 15:33:39,744 - Python advance project - ERROR - All 3 attempts failed.
+2025-08-13 15:35:42,335 - Python advance project - WARNING - This is a warning
+2025-08-13 15:35:42,336 - Python advance project - WARNING - Attempt 1 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x102b618d0>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x102b618d0>?
+2025-08-13 15:35:44,343 - Python advance project - WARNING - Attempt 2 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x102b618d0>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x102b618d0>?
+2025-08-13 15:35:46,349 - Python advance project - WARNING - Attempt 3 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x102b618d0>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x102b618d0>?
+2025-08-13 15:35:46,350 - Python advance project - ERROR - All 3 attempts failed.
+2025-08-13 15:37:25,142 - Python advance project - WARNING - This is a warning
