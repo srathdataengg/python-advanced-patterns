@@ -1,0 +1,20 @@
+# Define one or more pipelines. Toggle any with enabled: false
+pipelines:
+  - name: posts_sync
+    enabled: true
+    mode: sync              # sync | async
+    base_url: https://jsonplaceholder.typicode.com
+    endpoint: /posts        # used by SyncIngestor.fetch(url)
+    table: posts
+    batch_size: 500
+
+  - name: posts_async
+    enabled: true
+    mode: async
+    base_url: https://jsonplaceholder.typicode.com
+    url_pattern: /posts/{id}  # used to build URLs 1..N
+    id_range:
+      start: 1
+      end: 20
+    table: posts
+    batch_size: 500

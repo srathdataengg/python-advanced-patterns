@@ -1,49 +1,49 @@
+# utils/logger.py
+
 import logging
 import sys
+from pathlib import Path
 
-# ------------------------------------
-# 1. Create a logger instance
-# -------------------------------------
+# -----------------------------------
+# Base logger configuration
+# -----------------------------------
 
-logger = logging.getLogger("Python advance project")
-logger.setLevel(logging.DEBUG)  # Default level for logging
+# Ensure log file directory exists
+log_file = Path("app.log")
+log_file.parent.mkdir(parents=True, exist_ok=True)
 
-# -----------------------------------------
-# 2. Create a console handler
-# ----------------------------------------
-
-console_handler = logging.StreamHandler(sys.stdout)
-console_handler.setLevel(logging.DEBUG)  # Log everything to console
-
-# -----------------------------------------
-# 3. Create a file handler (optional)
-# -----------------------------------------
-
-file_handler = logging.FileHandler("app.log")
-file_handler.setLevel(logging.INFO)  # Only Info goes to file
-
-# ---------------------------------------
-# 4. Define a log format
-# ---------------------------------------
-
+# Create formatter (shared)
 formatter = logging.Formatter(
     "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
+
+# Console handler
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.DEBUG)
 console_handler.setFormatter(formatter)
+
+# File handler
+file_handler = logging.FileHandler(log_file, mode="a")
+file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(formatter)
 
-# ---------------------------------------
-# 5. Add handlers to logger
-# --------------------------------------
+# Root logger config
+logging.basicConfig(level=logging.DEBUG, handlers=[console_handler, file_handler])
 
-logger.addHandler(console_handler)
-logger.addHandler(file_handler)
 
-# ------------------------------
-# 6. Now you can use:
-#    logger.debug("Debug message")
-#    logger.info("Info message")
-#    logger.warning("Warning message")
-#    logger.error("Error message")
-#    logger.critical("Critical message")
-# ------------------------------
+def get_logger(name: str) -> logging.Logger:
+    """
+    Returns a logger with the given name,
+    already configured with console & file handlers.
+    """
+    return logging.getLogger(name)
+
+
+# Example usage when running this file directly
+if __name__ == "__main__":
+    logger = get_logger("TestLogger")
+    logger.debug("Debug message")
+    logger.info("Info message")
+    logger.warning("Warning message")
+    logger.error("Error message")
+    logger.critical("Critical message")
