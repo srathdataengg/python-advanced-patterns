@@ -9,3 +9,885 @@
 2025-08-13 15:35:46,349 - Python advance project - WARNING - Attempt 3 failed forfetch with error: Invalid URL '<__main__.SyncIngestor object at 0x102b618d0>': No scheme supplied. Perhaps you meant https://<__main__.SyncIngestor object at 0x102b618d0>?
 2025-08-13 15:35:46,350 - Python advance project - ERROR - All 3 attempts failed.
 2025-08-13 15:37:25,142 - Python advance project - WARNING - This is a warning
+2025-08-14 13:35:32,457 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/18: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,468 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/1: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,478 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/2: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,480 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/11: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,487 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/12: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,489 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/5: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,491 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/8: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,493 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/20: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,494 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/3: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,496 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/9: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,497 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/14: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,499 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/16: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,500 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/13: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,501 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/6: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,503 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/4: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,505 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/19: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,506 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/17: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,507 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/7: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,509 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/10: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,514 - Python advance project - ERROR - X Error fetching https://jsonplaceholder.typicode.com/posts/15: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1112, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/base_events.py", line 1145, in _create_connection_transport
+    await waiter
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 574, in _on_handshake_complete
+    raise handshake_exc
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/asyncio/sslproto.py", line 556, in _do_handshake
+    self._sslobj.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/ssl.py", line 979, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/ingestion/async_ingestor.py", line 20, in fetch
+    async with session.get(url) as response:
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/soumyakantarath/Downloads/WORKSPACE/FoxSports/python-advanced-patterns/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1027, in _wrap_create_connection
+    raise ClientConnectorCertificateError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to host jsonplaceholder.typicode.com:443 ssl:True [SSLCertVerificationError: (1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:992)')]
+2025-08-14 13:35:32,516 - Python advance project - INFO - Fetched 0 successful responses.
+2025-08-14 13:37:57,700 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/3
+2025-08-14 13:37:57,704 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/5
+2025-08-14 13:37:57,704 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/6
+2025-08-14 13:37:57,705 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/9
+2025-08-14 13:37:57,707 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/8
+2025-08-14 13:37:57,709 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/18
+2025-08-14 13:37:57,710 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/7
+2025-08-14 13:37:57,711 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/10
+2025-08-14 13:37:57,713 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/11
+2025-08-14 13:37:57,716 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/4
+2025-08-14 13:37:57,717 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/16
+2025-08-14 13:37:57,721 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/2
+2025-08-14 13:37:57,722 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/17
+2025-08-14 13:37:57,723 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/12
+2025-08-14 13:37:57,724 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/19
+2025-08-14 13:37:57,728 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/1
+2025-08-14 13:37:57,729 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/15
+2025-08-14 13:37:57,731 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/13
+2025-08-14 13:37:57,732 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/20
+2025-08-14 13:37:57,734 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/14
+2025-08-14 13:37:57,736 - Python advance project - INFO - Fetched 20 successful responses.
