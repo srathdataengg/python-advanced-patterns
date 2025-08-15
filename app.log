@@ -891,3 +891,7 @@ aiohttp.client_exceptions.ClientConnectorCertificateError: Cannot connect to hos
 2025-08-14 13:37:57,732 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/20
 2025-08-14 13:37:57,734 - Python advance project - INFO - Success: https://jsonplaceholder.typicode.com/posts/14
 2025-08-14 13:37:57,736 - Python advance project - INFO - Fetched 20 successful responses.
+2025-08-15 16:52:39,783 - utils.logger - WARNING - This is a warning
+2025-08-15 16:52:40,111 - __main__ - INFO - Running Sync Ingestion Pipeline
+2025-08-15 16:54:07,048 - utils.logger - WARNING - This is a warning
+2025-08-15 16:54:07,106 - __main__ - INFO - Running Sync Ingestion Pipeline

@@ -47,3 +47,5 @@ if __name__ == "__main__":
     logger.warning("Warning message")
     logger.error("Error message")
     logger.critical("Critical message")
+
+logger = get_logger(__name__)

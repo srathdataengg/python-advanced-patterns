@@ -1,51 +1,116 @@
+# utils/retry.py
 """
-We have an API that sometime fails due to network issues. We don't want to immediately retry,
-because that can overload the service. Can you write a Python decorator that automatically retries
-a function call with exponential backoff, works for both synchronous functions and lets us configure retries,
-delay and exception types?
+Retry decorator with exponential backoff.
+- Works for both synchronous and asynchronous functions
+- Backward-compatible param names: (max_attempts / retries) and (delay_seconds / delay)
+- Optional jitter and custom logger
 """
 
-import time
+from __future__ import annotations
+
 import asyncio
-import logging
 import functools
-from typing import Callable, Type, Tuple, Union
+import logging
+import random
+import time
+from typing import Callable, Optional, Tuple, Type, Union
+from utils.logger import get_logger
+logger = get_logger(__name__)
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s[%(levelname)s] %(message)s")
+ExceptionTypes = Union[Type[BaseException], Tuple[Type[BaseException], ...]]
+
 
 def retry(
-        retries: int = 3,
-        delay: float = 1,
-        backoff: float =2,
-        exceptions: Union[Type[Exception],Tuple[Type[Exception],...]] = Exception,
+    # Backward-compatible aliases:
+    retries: Optional[int] = None,
+    max_attempts: int = 3,
+    delay: Optional[float] = None,
+    delay_seconds: float = 1.0,
+    # Standard knobs:
+    backoff: float = 2.0,
+    exceptions: ExceptionTypes = (Exception,),
+    jitter: float = 0.0,  # adds up to ±jitter seconds to each delay
+    logger: Optional[logging.Logger] = None,
 ):
     """
-    Retry decorator  with exponential backoff.
+    Decorate a function to retry on specific exceptions with exponential backoff.
 
     Args:
-        :param retries (int): Number of retry attempts
-        :param delay: Initial delay between retries in seconds.
-        :param backoff: Multiplication factor for delay after each failure.
-        :param exceptions (Exception or tuple): Exceptions(s) to trigger a retry
-        :return:
+        retries: Alias for max_attempts (kept for compatibility).
+        max_attempts: Total number of retry attempts before giving up.
+        delay: Alias for delay_seconds (kept for compatibility).
+        delay_seconds: Initial delay in seconds before the first retry.
+        backoff: Multiplier applied to the delay after each failure.
+        exceptions: Exception class (or tuple of classes) that triggers a retry.
+        jitter: If > 0, adds small random noise to delay to avoid thundering herd.
+        logger: Optional logger; defaults to root logger if not provided.
     """
+    attempts = retries if retries is not None else max_attempts
+    initial_delay = delay if delay is not None else delay_seconds
+    log = logger or logging.getLogger(__name__)
+
+    # Normalize exceptions to a tuple
+    if not isinstance(exceptions, tuple):
+        exceptions = (exceptions,)
+
+    def _sleep_with_jitter(seconds: float, is_async: bool):
+        # Compute jittered sleep time
+        if jitter and jitter > 0:
+            # jitter in [-jitter, +jitter]
+            seconds = max(0.0, seconds + random.uniform(-jitter, jitter))
+        if is_async:
+            return asyncio.sleep(seconds)
+        else:
+            time.sleep(seconds)
+            return None
 
     def decorator(func: Callable):
+        # Async wrapper
         if asyncio.iscoroutinefunction(func):
-            """ Async version """
-    @functools.wraps(func)
-    async def async_wrapper(*args,**kwargs):
-        _delay = delay
-        for attempt in range(1, retries + 2 ): # retries + 1 final attempt
-            try:
-                return await func(*args,**kwargs)
-            except exceptions as e:
-                if attempt > retries:
-                    logging.error(f"Final attempt failed:{e} ")
-                    raise
-                logging.warning(f"Async attempt {attempt} failed: {e}. Retrying in {_delay:.2f}s...")
-                await asyncio.sleep(_delay)
-                _delay *=backoff
-    return async_wrapper
 
+            @functools.wraps(func)
+            async def async_wrapper(*args, **kwargs):
+                delay_now = initial_delay
+                for attempt_idx in range(1, attempts + 1):
+                    try:
+                        return await func(*args, **kwargs)
+                    except exceptions as e:
+                        if attempt_idx >= attempts:
+                            log.error(
+                                "Final async attempt %s failed for %s: %s",
+                                attempt_idx, func.__name__, e
+                            )
+                            raise
+                        log.warning(
+                            "Async attempt %s failed for %s: %s. Retrying in %.2fs...",
+                            attempt_idx, func.__name__, e, delay_now
+                        )
+                        await _sleep_with_jitter(delay_now, is_async=True)
+                        delay_now *= backoff
 
+            return async_wrapper
+
+        # Sync wrapper
+        @functools.wraps(func)
+        def sync_wrapper(*args, **kwargs):
+            delay_now = initial_delay
+            for attempt_idx in range(1, attempts + 1):
+                try:
+                    return func(*args, **kwargs)
+                except exceptions as e:
+                    if attempt_idx >= attempts:
+                        log.error(
+                            "Final attempt %s failed for %s: %s",
+                            attempt_idx, func.__name__, e
+                        )
+                        raise
+                    log.warning(
+                        "Attempt %s failed for %s: %s. Retrying in %.2fs...",
+                        attempt_idx, func.__name__, e, delay_now
+                    )
+                    _sleep_with_jitter(delay_now, is_async=False)
+                    delay_now *= backoff
+
+        return sync_wrapper
+
+    return decorator
